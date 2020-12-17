@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> set home  Page </title>
+    <link rel="stylesheet" href="..\css\houseset.css">
+  </head>
+  <body>
+
+  		<div class="class1">
+        <iframe src="../php/myrooms.php" style="border: none;" name="showUrRooms" height="200px" width="700px"></iframe>
+  			<div class="house-div">
+  				<form class="houseform" name="houseform1" action="../php/sethouse.php" method="post" >
+  					<span class="house-form-title"> Rent Your House </span>
+				<br />
+            <div class="house-input" >
+              <input class="input100" type="text" name="FullName" placeholder=" Enter Full Name " required>
+            </div>
+            <div class="house-input">
+              <label id="type">Choose House Type:</label>
+                <select name="typeHouse" size="1">
+                  <option name="1BHK" value="1BHK">1BHK</option>
+                  <option name="2BHK" value="2BHK">2BHK</option>
+                  <option name="3BHK" value="3BHK">3BHK</option>
+                  <option name="4BHK" value="4BHK">4BHK</option>
+            </div>
+			<div class="house-input" >
+			<input class="input" type="text" name="address" placeholder="Address of the house" required>
+			</div>
+      <div class="house-input">
+        <label id="type">Choose city:</label>
+          <select name="citytype" size="1">
+            <option name="Hyderbad" value="Hyderbad">Hyderbad</option>
+            <option name="Madanapalle" value="Madanapalle">Madanapalle</option>
+            <option name="Bangalore" value="Bangalore">Bangalore</option>
+            <option name="Chittoor" value="Chittoor">Chittoor</option>
+      </div>
+      <div class="house-input" >
+        <input class="input" type="Number" name="price" placeholder="Price of the house" required>
+      </div>
+      <input type="file" class="input" id="img" name="img" accept="image/*" multiple>
+      <div class="location" >
+        <input type="text" id="lat" name="lati" placeholder="latitude" readonly>
+        <input type="text" id="lon" name="long" placeholder="longitude" readonly>
+          <button type="button" id="locbutton" name="locbutton" onclick="getLocation()">Click this to add location</button>
+
+  	  </div>
+      <div class="input2">
+  			<textarea class="input" name="textarea" rows="4" cols="80" placeholder="A little description of house"></textarea>
+  		</div>
+
+			<div class="button1">
+				<button class="button" type="submit" > <span> Post </span></button>
+				<a href="../php/LApage.php"><button class="button" type="button" > <span> Back </span></button></a>
+	    </div>
+      </form>
+  	</div>
+<script type="text/javascript">
+var latitude,longitude;
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
+}
+    function showPosition(position) {
+      latitude=position.coords.latitude;
+      longitude= position.coords.longitude;
+
+      alert("latitude is "+latitude);
+      alert("longitude is "+longitude);
+    /*  x.innerHTML = ""+position.coords.latitude;
+      y.innerHTML = ""+position.coords.longitude;
+      */
+      document.getElementById('lat').value = latitude;
+      document.getElementById('lon').value = longitude;
+
+    }
+</script>
+  </body>
+</html>
